@@ -1,0 +1,28 @@
+{
+    "manifest_version": 2,
+    "name": "Klepto",
+    "description": "Klepto keeps track of media URLs from some popular streaming sites. Klepto DOES NOT download anything.",
+    "version": "1.0",
+    "permissions": [
+        "tabs",
+        "webRequest",
+        "http://*/*",
+        "https://*/*"
+    ],
+    "icons": {
+        "16": "glyphicons-365-cloud-download.png",
+        "48": "glyphicons-365-cloud-download.png",
+        "128": "glyphicons-365-cloud-download.png"
+    },
+    "background": { "scripts": ["background.js"] },
+    "browser_action": {
+        "default_icon": "glyphicons-365-cloud-download.png",
+        "default_popup": "popup.html"
+    },
+    "content_scripts":[
+        {
+            "matches": ["https://8tracks.com/*"],
+            "js": ["content.js"]
+        }
+    ]
+}

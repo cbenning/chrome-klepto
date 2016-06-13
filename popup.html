@@ -1,0 +1,74 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+    <head>
+        <script src="popup.js"></script>
+        <title>Klepto</title>
+        <style>
+        html {
+            padding: 0;
+            margin: 0;
+            display:block;
+        }
+        body {
+            width: 600px;
+        }
+        h4.heading {
+            text-align: center;
+        }
+        td.artist-column, td.track-column {
+            width: 45%;
+        }
+        td.dl-column {
+            width: 10%;
+        }
+        tr {
+            padding: 0px;
+            margin: 0px;
+        }
+        td {
+            padding: 0px;
+            margin: 0px;
+        }
+        div.container-reactive {
+            padding: 0;
+            margin: 0;
+        }
+        span.label-info {
+            margin-left: 5px;
+        }
+        hr {
+            margin-top: 0px;
+            margin-bottom: 0px;
+
+        }
+        </style>
+        <link rel="stylesheet" href="resources/bootstrap-3.3.6-dist/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    </head>
+    <body>
+        <h4 class="heading">Klepto - Link Tracker</h4>
+        <div>
+            <span class="label label-info">Info</span> Source Code at <a href="https://glyphicons.com/" target="_blank" >Glyphicons</a><br />
+            <span class="label label-info">Info</span> Icons Provided by <a href="https://glyphicons.com/" target="_blank" >Glyphicons</a>
+        </div>
+        <hr />
+        <div class="container-reactive" >
+            <table class="table table-hover table-striped table-fixedheader">
+                <thead>
+                    <tr>
+                        <th class="track-column">Title</th>
+                        <th class="artist-column">Artist</th>
+                        <th class="dl-column">DL</th>
+                    </tr>
+                </thead>
+                <tbody id="mediatable">
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
+
