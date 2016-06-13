@@ -1,8 +1,9 @@
 
-= What is it? =
+# What is it? 
+
 Klepto keeps track of media URLs from some popular streaming sites. Klepto DOES NOT download anything.
 
-= Install =
+# Install
 
  1. Clone the repository
  1. In Chrome -> 
