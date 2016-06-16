@@ -1,28 +1,26 @@
 
-function setList(urllist) {
+function setList(urllist, newCount) {
         var table = document.getElementById('mediatable');
         table.innerHTML = '';
+        count = 1
         urllist.reverse().forEach(function(mediainfo){
 
             // File extention
             var ext = mediainfo.url.split('.').pop();
 
             // For the link
-            console.log(mediainfo)
             var a = document.createElement('a')
-            var displayname = mediainfo.track.track + " - " +
-                              mediainfo.track.artist + "." + ext
+            var displayname = decodeURIComponent(mediainfo.track.full) + "." + ext
             a.setAttribute('href',mediainfo.url)
             a.setAttribute('download', displayname);
             a.setAttribute('class','btn');
             a.setAttribute("class","glyphicon glyphicon-circle-arrow-down");
-            //a.innerHTML = displayname
 
-            // For the download img
-            //var span = document.createElement('span');
-            //span.setAttribute("class","glyphicon glyphicon-circle-arrow-down");
-            //span.setAttribute("aria-hidden","true");
-            //a.appendChild(span);
+            // Count Column
+            var countCol = document.createElement('td');
+            countCol.setAttribute("class","count-column");
+            countCol.innerHTML = count;
+            countCol.appendChild(a);
 
             // Download Column
             var dlCol = document.createElement('td');
@@ -34,24 +32,40 @@ function setList(urllist) {
             artistCol.setAttribute("class","artist-column");
             artistCol.innerHTML = mediainfo.track.artist
 
-            // Track Column
-            var trackCol = document.createElement('td');
-            trackCol.setAttribute("class","track-column");
-            trackCol.innerHTML = mediainfo.track.track
+            // Title Column
+            var titleCol = document.createElement('td');
+            titleCol.setAttribute("class","title-column");
+            titleCol.innerHTML = mediainfo.track.title
 
             // New Row
             var row = document.createElement('tr');
-            row.appendChild(trackCol);
+
+            if(newCount >= count) {
+                row.setAttribute("class","new");
+                row.addEventListener("mouseout",function (event) {
+                    event.fromElement.parentNode.classList.remove("new");
+                })
+            }
+
+            row.appendChild(countCol);
+            row.appendChild(titleCol);
             row.appendChild(artistCol);
             row.appendChild(dlCol);
 
             // Add the Row
             table.appendChild(row);
+            count += 1;
         })
 }
 
 chrome.runtime.sendMessage({method:"getList"},function(response){
-        setList(response)
+
+        chrome.browserAction.getBadgeText({}, function(text){
+            var newCount = 0;
+            if( text != "" ) { newCount = parseInt(text); }
+            chrome.browserAction.setBadgeText({ text: ""})
+            setList(response, newCount)
+        });
 });
 
-chrome.browserAction.setBadgeText({ text: ""})
+

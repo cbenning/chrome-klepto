@@ -10,18 +10,18 @@
         "https://*/*"
     ],
     "icons": {
-        "16": "glyphicons-365-cloud-download.png",
-        "48": "glyphicons-365-cloud-download.png",
-        "128": "glyphicons-365-cloud-download.png"
+        "16": "resources/glyphicons-365-cloud-download.png",
+        "48": "resources/glyphicons-365-cloud-download.png",
+        "128": "resources/glyphicons-365-cloud-download.png"
     },
     "background": { "scripts": ["background.js"] },
     "browser_action": {
-        "default_icon": "glyphicons-365-cloud-download.png",
+        "default_icon": "resources/glyphicons-365-cloud-download.png",
         "default_popup": "popup.html"
     },
     "content_scripts":[
         {
-            "matches": ["https://8tracks.com/*"],
+            "matches": ["*://*/*"],
             "js": ["content.js"]
         }
     ]

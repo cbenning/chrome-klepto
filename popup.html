@@ -6,8 +6,8 @@
  -->
 <html>
     <head>
-        <script src="popup.js"></script>
         <title>Klepto</title>
+        <link rel="stylesheet" href="resources/bootstrap-3.3.6-dist/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <style>
         html {
             padding: 0;
@@ -23,8 +23,11 @@
         td.artist-column, td.track-column {
             width: 45%;
         }
-        td.dl-column {
-            width: 10%;
+        td.dl-column, td.count-column {
+            width: 5%;
+        }
+        td, th {
+            text-align: center;
         }
         tr {
             padding: 0px;
@@ -41,26 +44,36 @@
         span.label-info {
             margin-left: 5px;
         }
-        hr {
-            margin-top: 0px;
+        div.container-reactive {
+            overflow-y: scroll;
+            height: 250px;
+        }
+        table {
             margin-bottom: 0px;
-
+        }
+        hr {
+            margin: 0;
+            padding: 0;
+        }
+        div.footer {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        tr.new {
+            background-color: #FBFF9E;
         }
         </style>
-        <link rel="stylesheet" href="resources/bootstrap-3.3.6-dist/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <script src="popup.js"></script>
     </head>
     <body>
         <h4 class="heading">Klepto - Link Tracker</h4>
-        <div>
-            <span class="label label-info">Info</span> Source Code at <a href="https://github.com/cbenning/chrome-klepto" target="_blank" >Github</a><br />
-            <span class="label label-info">Info</span> Icons Provided by <a href="https://glyphicons.com/" target="_blank" >Glyphicons</a>
-        </div>
         <hr />
         <div class="container-reactive" >
-            <table class="table table-hover table-striped table-fixedheader">
+            <table class="table table-hover table-fixedheader">
                 <thead>
                     <tr>
-                        <th class="track-column">Title</th>
+                        <th class="count-column">#</th>
+                        <th class="title-column">Title</th>
                         <th class="artist-column">Artist</th>
                         <th class="dl-column">DL</th>
                     </tr>
@@ -68,6 +81,11 @@
                 <tbody id="mediatable">
                 </tbody>
             </table>
+        </div>
+        <hr />
+        <div class="footer" >
+            <span class="label label-info">Info</span> Source Code at <a href="https://github.com/cbenning/chrome-klepto" target="_blank" >Github</a><br />
+            <span class="label label-info">Info</span> Icons Provided by <a href="https://glyphicons.com/" target="_blank" >Glyphicons</a>
         </div>
     </body>
 </html>

@@ -13,9 +13,10 @@ chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
                     .getElementsByClassName("title_artist")[0]
 
         artist = trackinfo.getElementsByClassName("a")[0].innerHTML;
-        track = trackinfo.getElementsByClassName("t")[0].innerHTML;
+        title = trackinfo.getElementsByClassName("t")[0].innerHTML;
+        full = title + " - " + artist
 
-        sendResponse({ track: track, artist: artist })
+        sendResponse({ title: title, artist: artist, full: full })
 
         }, 1000);
     return true;
