@@ -13,7 +13,7 @@
 //type : "other"
 //url : "https://dtp6gm33au72i.cloudfront.net/tf/096/733/412/oN10ma.48k.v3.m4a"
 
-mediaurls=["*://*.cloudfront.net/*.m4a"]
+mediaurls=["*://*.cloudfront.net/*.m4a","*://*.8tracks.com/*.m4a"]
 siteurls="https?://8tracks.com/*"
 urllist = []
 filters = { types: ["other"] , urls : mediaurls }
