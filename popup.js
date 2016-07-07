@@ -6,7 +6,7 @@ function setList(urllist, newCount) {
         urllist.reverse().forEach(function(mediainfo){
 
             // File extention
-            var ext = mediainfo.url.split('.').pop();
+            var ext = mediainfo.url.split('.').pop().substring(0,3);
 
             // For the link
             var a = document.createElement('a')
@@ -27,15 +27,10 @@ function setList(urllist, newCount) {
             dlCol.setAttribute("class","dl-column");
             dlCol.appendChild(a);
 
-            // Artist Column
-            var artistCol = document.createElement('td');
-            artistCol.setAttribute("class","artist-column");
-            artistCol.innerHTML = mediainfo.track.artist
-
             // Title Column
             var titleCol = document.createElement('td');
-            titleCol.setAttribute("class","title-column");
-            titleCol.innerHTML = mediainfo.track.title
+            titleCol.setAttribute("class","track-column");
+            titleCol.innerHTML = mediainfo.track.full
 
             // New Row
             var row = document.createElement('tr');
@@ -49,7 +44,6 @@ function setList(urllist, newCount) {
 
             row.appendChild(countCol);
             row.appendChild(titleCol);
-            row.appendChild(artistCol);
             row.appendChild(dlCol);
 
             // Add the Row
