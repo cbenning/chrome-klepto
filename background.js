@@ -29,7 +29,7 @@ history_size = 25
 
 urllist = []
 
-chrome.webRequest.onCompleted.addListener(
+chrome.webRequest.onResponseStarted.addListener(
     function( request ) {
 
         if (request.tabId > 0) {
