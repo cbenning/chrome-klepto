@@ -15,7 +15,7 @@
 
 mediaurls=[
     "*://*.cloudfront.net/*.m4a",
-    "*://*.sndcdn.com/*"
+    "*://ec-media.sndcdn.com/*"
 ]
 
 sites=[
@@ -38,7 +38,7 @@ chrome.webRequest.onCompleted.addListener(
 
                     if(tab.url.match(site.url)){
 
-                        chrome.tabs.sendMessage(request.tabId, {method:"getTrackInfo", handler:site.handler},function(trackinfo){
+                        chrome.tabs.sendMessage(request.tabId, {method:"getTrackInfo", handler:site.handler}, function(trackinfo){
                                 urllist.push({ url: request.url, track : trackinfo})
                                 if(urllist.length > history_size) { urllist.shift() } // Discard more than 25
                                 chrome.browserAction.getBadgeText({}, function(text){
@@ -47,9 +47,7 @@ chrome.webRequest.onCompleted.addListener(
                                     chrome.browserAction.setBadgeText({ text: ((newCount+1).toString()) });
                                 });
                         });
-
                     }
-
                 })
             })
         }

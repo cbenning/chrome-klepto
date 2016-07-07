@@ -16,19 +16,29 @@ chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
                         .getElementsByClassName("title_container")[0]
                         .getElementsByClassName("title_artist")[0]
 
-            artist = trackinfo.getElementsByClassName("a")[0].innerHTML;
-            title = trackinfo.getElementsByClassName("t")[0].innerHTML;
+            artist = trackinfo.getElementsByClassName("a")[0].innerHTML.trim();
+            title = trackinfo.getElementsByClassName("t")[0].innerHTML.trim();
             full = title + " - " + artist
 
             sendResponse({ title: title, artist: artist, full: full })
 
-            }, 1000);
+        }, 1000);
         return true;
-
     }
     else if(message.handler == "soundcloud") {
-        div.playbackSoundBadge__titleContextContainer > a.playbackSoundBadge__title.sc-truncate
-       console.log("Soundcloud"); 
+
+        setTimeout(function(){
+
+            trackinfo = document.getElementsByClassName("playbackSoundBadge__title")[0]
+
+            artist = ""
+            title = ""
+            full = trackinfo.getAttribute("title").trim()
+
+            sendResponse({ title: title, artist: artist, full: full })
+
+        }, 1000);
+        return true;
     }
   }
 });
