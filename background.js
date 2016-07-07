@@ -15,7 +15,8 @@
 
 mediaurls=[
     "*://*.cloudfront.net/*.m4a",
-    "*://ec-media.sndcdn.com/*"
+    "*://ec-media.sndcdn.com/*",
+    "*://*.8tracks.com/*.m4a"
 ]
 
 sites=[
